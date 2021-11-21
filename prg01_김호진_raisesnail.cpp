@@ -64,8 +64,8 @@ void menu() {
 
 
 int main(void) {
-	//title();
-	//How_to_play();
+	title();
+	How_to_play();
 	SNAIL snail_arr[5] = { {1,0},{2,0},{3,0}, {4,0}, {5,0} };
 	int x;
 while(1) {
@@ -84,9 +84,10 @@ while(1) {
 		for (int i = 0; i < 5; i++) {
 			print_snail_info(snail_arr[i]);
 		}
-		printf("\n\n3초 후에 메뉴로 돌아갑니다.");
-		Sleep(3000);
-	}
+		printf("\n\n엔터키를 눌러 메뉴로 돌아가세요.\n");
+		getchar();
+		getchar();
+		}
     
 	else if (x == 2) {  //달팽이생성메뉴
 		int snail_count;
@@ -106,16 +107,22 @@ while(1) {
 
 		else if (snail_count == 2) {
 			system("cls");
-			printf("5초 후에 달팽이가 추가됩니다.");
 			snail_arr[0].count += 5;
-			Sleep(5000);
+			for (int i = 5; i > 0; i--) {
+			printf("%d초 후에 달팽이가 추가됩니다.",i);
+            Sleep(1000);
+			system("cls");
+			}
 		}
 
 		else if (snail_count == 3) {
 			system("cls");
-			printf("10초 후에 달팽이가 추가됩니다.");
 			snail_arr[0].count += 10;
-			Sleep(10000);
+			for (int i = 10; i > 0; i--) {
+				printf("%d초 후에 달팽이가 추가됩니다.", i);
+				Sleep(1000);
+				system("cls");
+			}
 		}
 
 		else if (snail_count > 3) {
@@ -153,7 +160,7 @@ while(1) {
 				}
 				else
 					printf("강화 실패....");
-				Sleep(1400);
+				Sleep(1000);
 			}
 		}
 
@@ -174,7 +181,7 @@ while(1) {
 				}
 				else
 					printf("강화 실패....");
-				Sleep(1400);
+				Sleep(1000);
 			}
 		}
 
@@ -195,7 +202,7 @@ while(1) {
 				}
 				else
 					printf("강화 실패....");
-				Sleep(1400);
+				Sleep(1000);
 			}
 		}
 
@@ -216,7 +223,7 @@ while(1) {
 				}
 				else
 					printf("강화 실패....");
-				Sleep(1400);
+				Sleep(1000);
 			}
 		}
 		
