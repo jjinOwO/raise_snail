@@ -1,9 +1,8 @@
+//아스키아트 참고 사이트 : http://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=GAME%20OVER
 #include <stdio.h>
 #include <Windows.h>
 #include <stdbool.h>
 #include <time.h>
-
-int menu_select;
 
 typedef struct {
 	int level;
@@ -13,7 +12,7 @@ typedef struct {
 void print_snail_info(SNAIL snail);
 
 void print_snail_info(SNAIL snail) {
-	printf(" %d레벨 달팽이 : %d개\n\n", snail.level, snail.count);
+	printf(" <%d레벨 달팽이> : %d개\n\n", snail.level, snail.count);
 	SNAIL s;
 }
 
@@ -54,33 +53,23 @@ void How_to_play() {
 
 
 int main(void) {
-	//title();
-	//How_to_play();
-	SNAIL snail_arr[5] = { {1,0},{2,0},{3,0}, {4,0}, {5,0} };
 	int x;
 	int boss_clear = 0;
-	//snail_arr[4].count++;
-	//snail_arr[2].count++;
-	snail_arr[3].count++;
-	if (snail_arr[2].count >= 1) {
-		boss_clear++;
-	}
-	else if (snail_arr[3].count >= 1) {
-		boss_clear++;
-	}
-	else if (snail_arr[4].count >= 1) {
-		boss_clear++;
-	}
+	SNAIL snail_arr[5] = { {1,0},{2,0},{3,0}, {4,0}, {5,0} };
+	
+	title();
+	How_to_play();	  
+
 	while (1) {
 
 		system("cls");
 		printf("\n-----------------------------\n");
-		printf("\n<1>   달팽이 수 확인\n");
-		printf("\n<2>   달팽이 생성\n");
-		printf("\n<3>   달팽이 강화\n");
-		printf("\n<4>   보스배틀\n");
+		printf("\n1.   <달팽이 정보>\n");
+		printf("\n2.   <달팽이 생성>\n");
+		printf("\n3.   <달팽이 강화>\n");
+		printf("\n4.   <보스배틀>\n");
 		printf("\n-----------------------------\n");
-		printf("\n\n원하는 메뉴를 선택하세요 >> ");
+		printf("\n\n원하는 메뉴를 선택하세요.(번호 입력) >> ");
 		scanf_s("%d", &x);
 
 		if (x == 1) {
@@ -98,12 +87,12 @@ int main(void) {
 			int snail_count;
 			system("cls");
 			printf("\n-------------------------------------------------------------\n");
-			printf("\n1. 1레벨 달팽이 x 1  (1초 소요)\n");
-			printf("\n2. 1레벨 달팽이 x 5  (5초 소요)\n");
-			printf("\n3. 2레벨 달팽이 x 5  (5초 소요) (1단계 보스 클리어 이후 해제)\n");
-			printf("\n4. 3레벨 달팽이 x 5  (5초 소요) (2단계 보스 클리어 이후 해제)\n");
+			printf("\n1. <1레벨 달팽이 x 1>  (1초 소요)\n");
+			printf("\n2. <1레벨 달팽이 x 5>  (5초 소요)\n");
+			printf("\n3. <2레벨 달팽이 x 5>  (5초 소요) (1단계 보스 클리어 이후 해제)\n");
+			printf("\n4. <3레벨 달팽이 x 5>  (5초 소요) (2단계 보스 클리어 이후 해제)\n");
 			printf("\n-------------------------------------------------------------\n");
-			printf("\n\n몇마리의 달팽이를 생성할 것인지 고르세요 >> ");
+			printf("\n\n원하는 메뉴를 선택하세요.(번호 입력) >> ");
 			scanf_s("%d", &snail_count);
 
 			if (snail_count == 1) {
@@ -123,7 +112,7 @@ int main(void) {
 				}
 			}
 
-			else if (snail_count == 3 and boss_clear == 1) {
+			else if (snail_count == 3 and boss_clear >= 1) {
 				system("cls");
 				snail_arr[1].count += 5;
 				for (int i = 5; i > 0; i--) {
@@ -132,13 +121,14 @@ int main(void) {
 					system("cls");
 				}
 			}
+
 			else if (snail_count == 3 and boss_clear < 1) {
 				system("cls");
 				printf("아직 사용할 수 없는 시스템입니다.");
 				Sleep(1000);
 			}
 
-			else if (snail_count == 4 and boss_clear == 2) {
+			else if (snail_count == 4 and boss_clear >= 2) {
 				system("cls");
 				snail_arr[2].count += 5;
 				for (int i = 5; i > 0; i--) {
@@ -147,12 +137,12 @@ int main(void) {
 					system("cls");
 				}
 			}
+
 			else if (snail_count == 4 and boss_clear < 2) {
 				system("cls");
 				printf("아직 사용할 수 없는 시스템입니다.");
 				Sleep(1000);
 			}
-
 
 			else if (snail_count > 4) {
 				system("cls");
@@ -163,15 +153,17 @@ int main(void) {
 		}
 
 		else if (x == 3) {  //강화메뉴
+
 			system("cls");
 			int select_level;
+
 			printf("\n-------------------------------\n");
 			printf("\n1. <1레벨 + 1레벨> (확률: 70%%)\n");
 			printf("\n2. <2레벨 + 2레벨> (확률: 50%%)\n");
 			printf("\n3. <3레벨 + 3레벨> (확률: 40%%)\n");
 			printf("\n4. <4레벨 + 4레벨> (확률: 30%%)\n");
 			printf("\n-------------------------------\n");
-			printf("\n\n강화할 레벨을 선택하세요.(번호 입력)>> ");
+			printf("\n\n원하는 메뉴를 선택하세요.(번호 입력) >> ");
 			scanf_s("%d", &select_level);
 
 			if (select_level == 1) {
@@ -258,7 +250,6 @@ int main(void) {
 				}
 			}
 
-
 			else if (select_level > 4) {
 				system("cls");
 				printf("잘못된 입력값입니다.\n");
@@ -268,7 +259,10 @@ int main(void) {
 		}
 
 		else if (x == 4) {
-			if (boss_clear == 1) {
+			
+		    if ((snail_arr[2].count >= 1 and boss_clear == 0) or
+				(snail_arr[3].count >= 1 and boss_clear == 0) or
+				(snail_arr[4].count >= 1 and boss_clear == 0)) {
 				system("cls");
 				printf("첫 번째로 상대할 보스는 작은 밀웜이다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
@@ -288,7 +282,8 @@ int main(void) {
 				boss_clear++;
 			}
 
-			else if (snail_arr[3].count >= 1 or snail_arr[4].count and boss_clear == 2) {
+			else if ((snail_arr[3].count >= 1 and boss_clear == 1) or
+				(snail_arr[4].count >= 1 and boss_clear == 1)) {
 				system("cls");
 				printf("두 번째로 상대할 보스는 참새다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
@@ -314,7 +309,7 @@ int main(void) {
 				boss_clear++;
 			}
 
-			else if (snail_arr[4].count >= 1 and boss_clear == 3) {
+			else if (snail_arr[4].count >= 1 and boss_clear == 2) {
 				system("cls");
 				printf("마지막으로 상대할 보스는 제작자다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
@@ -328,15 +323,17 @@ int main(void) {
 				printf("최종보스라기엔 너무 허무하게 물리쳤다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
 				getchar();
-				system("cls");
 				printf("★최종보스 처치 성공!★\n");
 				printf("(엔터키를 눌러서 계속)\n");
 				getchar();
 				system("cls");
-				printf("제가 만든 게임은 여기서 막을 내립니다.\n");
+				printf("당신은 모든 보스를 클리어하였습니다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
 				getchar();
-				printf("게임을 플레이해주셔서 감사합니다.\n");
+				printf("최강의 달팽이를 만드는 과정이 쉽지는 않았을 것입니다.\n");
+				printf("(엔터키를 눌러서 계속)\n");
+				getchar();
+				printf("그럼에도 불구하고 끝까지 게임에 임해주신 것에 대해 감사드립니다.\n");
 				printf("(엔터키를 눌러서 계속)\n");
 				getchar();
 				system("cls");
@@ -344,9 +341,10 @@ int main(void) {
 				printf("    / ____/   |  /  |/  / ____/  / __ \\ |  / / ____/ __ \\ \n");
 				printf("   / / __/ /| | / /|_/ / __/    / / / / | / / __/ / /_/ / \n");
 				printf("  / /_/ / ___ |/ /  / / /___   / /_/ /| |/ / /___/ _, _/  \n");
-				printf("  \\____/_/  |_/_/  /_/_____/  \\____/  |___/_____/_/ |_|   \n\n");
+				printf("  \\____/_/  |_/_/  /_/_____/   \\____/ |___/_____/_/ |_|   \n\n");
 				break;
 			}
+			
 			else {
 				system("cls");
 				printf("아직 다음 보스를 상대하기엔 힘이 부족하다.\n\n");
@@ -354,10 +352,6 @@ int main(void) {
 				printf("(엔터키를 눌러서 계속)\n");
 				getchar(); getchar();
 			}
-
 		}
-
 	}
 }
-
-
