@@ -56,7 +56,7 @@ int main(void) {
 	int x;
 	int boss_clear = 0;
 	SNAIL snail_arr[5] = { {1,0},{2,0},{3,0}, {4,0}, {5,0} };
-	snail_arr[4].count++;
+
 	title();
 	How_to_play();	  
 
