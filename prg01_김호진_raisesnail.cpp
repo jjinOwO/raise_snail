@@ -56,7 +56,7 @@ int main(void) {
 	int x;
 	int boss_clear = 0;
 	SNAIL snail_arr[5] = { {1,0},{2,0},{3,0}, {4,0}, {5,0} };
-	
+	snail_arr[4].count++;
 	title();
 	How_to_play();	  
 
@@ -275,7 +275,10 @@ int main(void) {
 				getchar();
 				system("cls");
 				printf("★1단계 보스 처치 성공!★\n");
-				printf("보상 : 2레벨 달팽이 10마리\n");
+				printf("보상 : 2레벨 달팽이 10마리\n\n");
+				printf("이제 달팽이 생성 메뉴에서 2단계 달팽이를 생성할 수 있습니다.\n");
+				printf("(엔터키를 눌러서 계속)\n");
+				getchar();
 				printf("\n\n(3초 후에 메뉴로 돌아갑니다.)\n");
 				Sleep(3000);
 				snail_arr[1].count += 10;
@@ -302,7 +305,10 @@ int main(void) {
 				getchar();
 				system("cls");
 				printf("★2단계 보스 처치 성공!★\n");
-				printf("보상 : 3레벨 달팽이 20마리\n");
+				printf("보상 : 3레벨 달팽이 20마리\n\n");
+				printf("이제 달팽이 생성 메뉴에서 3단계 달팽이를 생성할 수 있습니다.\n");
+				printf("(엔터키를 눌러서 계속)\n");
+				getchar();
 				printf("\n\n(3초 후에 메뉴로 돌아갑니다.)\n");
 				Sleep(3000);
 				snail_arr[2].count += 20;
